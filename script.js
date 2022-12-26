@@ -5,7 +5,12 @@ const scoreName = $('#scoreName');
 const results = $('#results');
 const questionText = $('#questionText')
 const timer = $('#timer')
+// Getting the options
+const btn1 = $('#btn-1');
+const btn2 = $('#btn-2');
+const btn3 = $('#btn-3')
 let correct = 0
+let questionNum = 0
 const Questions = [
     {
         id: 0,
@@ -27,6 +32,8 @@ const Questions = [
         answer: 'Ada Lovelece'
     }
 ]
+let currentQuestion = Questions[questionNum]
+
 
 // reducint vars
 $('#start').click(buildQuiz)
@@ -36,7 +43,8 @@ function buildQuiz(){
     discription.css('display', 'none')
     quizContainer.css('display', 'block')
     startTimer(99)
-    iterate()
+    main()
+    setQuestion(questionNum)
 }
 
 
@@ -54,68 +62,66 @@ function startTimer(time){
 
 
 
-function iterate(){
-    let questionNum = 0
-    let currentQuestion = Questions[questionNum]
+function main(){
+    
     // nextQuestion()
     // questionText.text(Questions[i].question)
     console.log('ah')
     console.log('current question: ' + currentQuestion.question)
     questionText.text(currentQuestion.question)
 
-    // Getting the options
-    const btn1 = $('#btn-1');
-    const btn2 = $('#btn-2');
-    const btn3 = $('#btn-3');
+}
 
-    console.log(currentQuestion.options)
+// Show selection for op1
+btn1.click(function() {
+    // console.log('btn1')
+    selected = currentQuestion.options[0] === currentQuestion.answer ? true : false
+    console.log(selected + ' btn 1')
+    anwser(selected)
+})
 
-    // Providing option text 
-    btn1.text(currentQuestion.options[0])
-    btn2.text(currentQuestion.options[1])
-    btn3.text(currentQuestion.options[2])
+// Show selection for op2
+btn2.click(function() {
+    selected = currentQuestion.options[1] === currentQuestion.answer ? true : false
+    console.log(selected + ' btn 2')
+    anwser(selected)
+})
 
-    var selected = ''
+    // Show selection for op3
+btn3.click(function() {
+    selected = currentQuestion.options[2] === currentQuestion.answer ? true : false
+    console.log(selected + ' btn 3')
+    anwser(selected)
+})
+
+function anwser(selected){
+    if (selected === true) {
+        correct++
+        console.log('correct: ' + correct)
+    } else {
+        // timer
+        console.log('time')
+    }
+    questionNum++
+    if(questionNum >= 2){
+        quizContainer.css('display', 'none')
+        scoreName.css('display', 'block')
+    }else{
+        setQuestion()
+    }
     
-    // Show selection for op1
-    btn1.click(function() {
-        // console.log('btn1')
-        selected = currentQuestion.options[0] === currentQuestion.answer ? true : false
-        console.log(selected)
-        anwser(selected)
-    })
+}
 
-    // Show selection for op2
-    btn2.click(function() {
-        selected = currentQuestion.options[1] === currentQuestion.answer ? true : false
-        console.log(selected)
-        anwser(selected)
-    })
+function setQuestion(){
+    console.log(questionNum)
+    questionText.text(Questions[questionNum].question)
+    // Providing option text 
+    btn1.text(Questions[questionNum].options[0])
+    btn2.text(Questions[questionNum].options[1])
+    btn3.text(Questions[questionNum].options[2])
+}
 
-        // Show selection for op3
-    btn3.click(function() {
-        selected = currentQuestion.options[2] === currentQuestion.answer ? true : false
-        console.log(selected)
-        anwser(selected)
-    })
-
-
-    function anwser(selected){
-        if (selected === true) {
-            questionNum = questionNum + 1
-            console.log('correct: ' + correct)
-            nextQuestion()
-        } else {
-            // timer
-            console.log('time')
-        }
-    }
-
-    function nextQuestion(){
-        questionText.text(currentQuestion.question)
-        // Providing option text 
-        btn1.text(currentQuestion.options[0])
-        btn2.text(currentQuestion.options[1])
-        btn3.text(currentQuestion.options[2])
-    }
+if(questionNum >= 2){
+    quizContainer.css('display', 'none')
+    scoreName.css('display', 'block')
 }
