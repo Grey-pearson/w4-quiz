@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- display block untill start button pressed -->
+    <div id="discription">
+        <h1>Quiz</h1>
+        <h2>a quiz built to ask silly random questions for fun and practice with JS</h2>
+        <button id="start">start</button>
+    </div>
+    <!-- questions and answers -->
+    <div id="quiz-container">
+        <div>
+            <div class="scoreText">Score</div>
+            <div class="score">0</div>
+        </div>
+        <div id="timer">100</div>
+        <p id="questionText"></p>
+        <div id="buttons">
+            <button id="0" class="quizButton">button 1</button>
+            <button id="1" class="quizButton">button 2</button>
+            <button id="2" class="quizButton">button 3</button>
+        </div>
+        <p id="rightorWrong"></p>
+    </div>
+
+    <div id="scoreName">
+        <p>youre score was: </p>
+        <p class="score">0</p>
+        <form action="submit" class="" id="initials">
+            <label>enter your initials</label>
+            <input type="tel" name="name" id="scoreInitials" placeholder="initials here">
+        </form>
+    </div>
+
+    <!-- displays after quiz function is over -->
+    <div id="results">
+        <h3>quiz results</h3>
+        <ul id="scoreRecords">
+            <!-- results will be appended here based on local storage  -->
+        </ul>
+        <button id="restart">restart</button>
+    </div>
+
+</body>
+
+</html>
