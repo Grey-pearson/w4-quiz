@@ -1,21 +1,3 @@
-## the goal is to create a Quiz
-
-```
-it will be mostly in JS, it will be timed, have a highscore, and be multiple choice
-```
-
-## Acceptance Criteria
-
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```
+## Quiz App
+#
+the goal with this app was to create a quiz with a timer and score keeping, the questions are arbitrary and meant to just be fun
